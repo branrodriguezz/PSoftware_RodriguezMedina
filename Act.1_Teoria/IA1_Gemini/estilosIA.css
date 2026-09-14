@@ -1,0 +1,448 @@
+/* ==========================================
+   VARIABLES Y PALETA DE COLORES
+   Energía y alegría (Cítricos, verdes vivos y corales)
+   ========================================== */
+:root {
+    --color-primary: #10B981;       /* Verde esmeralda vivo */
+    --color-primary-dark: #059669;
+    --color-secondary: #F59E0B;     /* Amarillo sol / energía */
+    --color-accent: #FF5722;        /* Coral vibrante */
+    --color-bg: #F8FAFC;            /* Fondo general limpio */
+    --color-card-bg: #FFFFFF;       /* Fondo de tarjetas */
+    --color-text: #1E293B;          /* Texto principal oscuro */
+    --color-text-muted: #64748B;    /* Texto secundario */
+    
+    /* Colores específicos solicitados para diferenciación */
+    --bg-interior: #F0FDF4;         /* Relleno sutil verde claro para interior */
+    --border-interior: #86EFAC;     /* Borde verde claro */
+    --bg-exterior: #FEF3C7;         /* Relleno sutil amarillo/cálido para exterior */
+    --border-exterior: #FCD34D;     /* Borde amarillo cálido */
+    
+    --radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* ==========================================
+   ESTILOS GENERALES Y RESET
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   BARRA DE NAVEGACIÓN
+   ========================================== */
+.navbar {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-secondary);
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+   ========================================== */
+.main-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* ==========================================
+   SECCIÓN CATÁLOGO Y FILTRADO POR CSS PURO
+   ========================================== */
+.section-catalogo {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.section-catalogo h2 {
+    font-size: 2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.section-desc {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Ocultar los inputs de radio reales */
+.section-catalogo input[type="radio"] {
+    display: none;
+}
+
+/* Botones de filtro visuales */
+.category-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: #E2E8F0;
+    color: var(--color-text);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    user-select: none;
+    border: 2px solid transparent;
+}
+
+.filter-btn:hover {
+    background-color: #CBD5E1;
+}
+
+/* Lógica de selección de pestañas mediante CSS :checked */
+#ver-todos:checked ~ .category-filters label[for="ver-todos"],
+#ver-interior:checked ~ .category-filters label[for="ver-interior"],
+#ver-exterior:checked ~ .category-filters label[for="ver-exterior"] {
+    background-color: var(--color-accent);
+    color: white;
+    border-color: #E64A19;
+    box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+}
+
+/* Lógica de ocultar/mostrar elementos según el radio seleccionado */
+#ver-interior:checked ~ .plant-grid .card-exterior,
+#ver-exterior:checked ~ .plant-grid .card-interior {
+    display: none;
+}
+
+/* ==========================================
+   GRILLA Y TARJETAS DE PLANTAS
+   ========================================== */
+.plant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.plant-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.plant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos específicos requeridos: borde definido y color de relleno distintos */
+.card-interior {
+    background-color: var(--bg-interior);
+    border: 3px solid var(--border-interior);
+}
+
+.card-exterior {
+    background-color: var(--bg-exterior);
+    border: 3px solid var(--border-exterior);
+}
+
+.card-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #E2E8F0;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.plant-card:hover .card-image-container img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+.card-body h3 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.badge-interior {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.badge-exterior {
+    background-color: #FEF9C3;
+    color: #854D0E;
+}
+
+.card-body p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.download-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--color-accent);
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.download-link:hover {
+    color: #D84315;
+    text-decoration: underline;
+}
+
+/* ==========================================
+   SECCIONES GENERALES (Contacto y Quién Soy)
+   ========================================== */
+.section-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.section-card h2 {
+    font-size: 1.75rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.section-card > p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Formulario de contacto */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 600px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 2px solid #CBD5E1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: #F8FAFC;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: white;
+}
+
+.submit-btn {
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    align-self: flex-start;
+    box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+}
+
+.submit-btn:hover {
+    background-color: #E64A19;
+    transform: translateY(-2px);
+}
+
+/* Autor del sitio */
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #F0FDF4, #E0F2FE);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 2px solid #BAE6FD;
+}
+
+.author-avatar {
+    font-size: 4rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    min-height: 90px;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.author-details h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+}
+
+.author-details p {
+    color: var(--color-text-muted);
+}
+
+.contact-chips {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.contact-chips span {
+    background-color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+   ========================================== */
+.footer {
+    background-color: #0F172A;
+    color: #94A3B8;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO (Media Queries)
+   ========================================== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .author-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-chips {
+        justify-content: center;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}
