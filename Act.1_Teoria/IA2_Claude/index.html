@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jardín de Cultivo — Descubrí plantas de interior y exterior con información detallada." />
+  <title>Jardín de Cultivo</title>
+  <link rel="stylesheet" href="estiloIA.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVEGACIÓN ==================== -->
+  <nav class="navbar" aria-label="Navegación principal">
+    <div class="navbar-inner">
+      <div class="navbar-logo">🌿 Jardín de <span>Cultivo</span></div>
+      <ul class="navbar-links" role="list">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#autor">Quién lo mantiene</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero" role="banner">
+    <span class="hero-icon" aria-hidden="true">🌱</span>
+    <h1>Bienvenido al Jardín de Cultivo</h1>
+    <p>Explorá nuestra selección de plantas de interior y exterior, con información detallada para cuidarlas y hacerlas florecer.</p>
+  </header>
+
+  <!-- ==================== CATÁLOGO ==================== -->
+  <section class="section section--light" id="catalogo" aria-labelledby="titulo-catalogo">
+    <div class="section-inner">
+      <h2 class="section-title" id="titulo-catalogo">Catálogo de Plantas</h2>
+      <p class="section-subtitle">Seleccioná una categoría para ver las plantas disponibles.</p>
+    </div>
+
+    <!--
+      IMPORTANTE: Los inputs radio OCULTOS deben ser hermanos directos
+      de .catalogo-filtro y .catalogo-grupos para que el selector CSS ~ funcione.
+      Por eso están FUERA de .section-inner pero dentro de <section>.
+    -->
+
+    <!-- Radio interior (seleccionado por defecto) -->
+    <input type="radio" id="radio-interior" name="tipo-planta" checked />
+    <!-- Radio exterior -->
+    <input type="radio" id="radio-exterior" name="tipo-planta" />
+
+    <!-- Labels visibles que actúan como botones -->
+    <div class="section-inner">
+      <div class="catalogo-filtro" role="group" aria-label="Filtrar por tipo de planta">
+        <label class="filtro-btn" for="radio-interior">🪴 Plantas de Interior</label>
+        <label class="filtro-btn" for="radio-exterior">🌸 Plantas de Exterior</label>
+      </div>
+    </div>
+
+    <!-- Grupos de tarjetas -->
+    <div class="catalogo-grupos section-inner">
+
+      <!-- ---- INTERIOR ---- -->
+      <div class="plantas-grupo grupo-interior" aria-label="Plantas de interior">
+
+        <!-- Potus -->
+        <article class="planta-card">
+          <div class="planta-img-wrap">
+            <img src="imagenes/potus.jpeg" alt="Fotografía de la planta Potus"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="planta-img-placeholder" style="display:none;" aria-hidden="true">🍃</div>
+          </div>
+          <div class="planta-body">
+            <span class="planta-tipo-badge badge-interior">Interior</span>
+            <h3 class="planta-nombre">Potus</h3>
+            <p class="planta-desc">Planta trepadora de follaje brillante, ideal para ambientes con poca luz. Requiere riego moderado y tolera el descuido.</p>
+            <a class="planta-link" href="info/potus.pdf" download="potus.pdf">📄 Más información</a>
+          </div>
+        </article>
+
+        <!-- Cinta -->
+        <article class="planta-card">
+          <div class="planta-img-wrap">
+            <img src="imagenes/cinta.jpeg" alt="Fotografía de la planta Cinta"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="planta-img-placeholder" style="display:none;" aria-hidden="true">🌿</div>
+          </div>
+          <div class="planta-body">
+            <span class="planta-tipo-badge badge-interior">Interior</span>
+            <h3 class="planta-nombre">Cinta</h3>
+            <p class="planta-desc">Con sus largas hojas verdes y blancas, la cinta decora macetas colgantes. Se adapta fácilmente a interiores luminosos.</p>
+            <a class="planta-link" href="info/cinta.pdf" download="cinta.pdf">📄 Más información</a>
+          </div>
+        </article>
+
+        <!-- Zamioculca -->
+        <article class="planta-card">
+          <div class="planta-img-wrap">
+            <img src="imagenes/zamioculca.jpeg" alt="Fotografía de la planta Zamioculca"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="planta-img-placeholder" style="display:none;" aria-hidden="true">🌱</div>
+          </div>
+          <div class="planta-body">
+            <span class="planta-tipo-badge badge-interior">Interior</span>
+            <h3 class="planta-nombre">Zamioculca</h3>
+            <p class="planta-desc">Resistente y elegante, prospera con luz indirecta y riegos espaciados. Perfecta para principiantes.</p>
+            <a class="planta-link" href="info/zamioculca.pdf" download="zamioculca.pdf">📄 Más información</a>
+          </div>
+        </article>
+
+      </div><!-- /grupo-interior -->
+
+      <!-- ---- EXTERIOR ---- -->
+      <div class="plantas-grupo grupo-exterior" aria-label="Plantas de exterior">
+
+        <!-- Alegría del hogar -->
+        <article class="planta-card">
+          <div class="planta-img-wrap">
+            <img src="imagenes/alegria_del_hogar.jpeg" alt="Fotografía de la planta Alegría del hogar"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="planta-img-placeholder" style="display:none;" aria-hidden="true">🌺</div>
+          </div>
+          <div class="planta-body">
+            <span class="planta-tipo-badge badge-exterior">Exterior</span>
+            <h3 class="planta-nombre">Alegría del Hogar</h3>
+            <p class="planta-desc">Floración exuberante en tonos vibrantes, ideal para bordes y jardines. Prefiere lugares con sol y humedad constante.</p>
+            <a class="planta-link" href="info/alegria_del_hogar.pdf" download="alegria_del_hogar.pdf">📄 Más información</a>
+          </div>
+        </article>
+
+        <!-- Cineraria Marítima -->
+        <article class="planta-card">
+          <div class="planta-img-wrap">
+            <img src="imagenes/cineria_maritima.jpeg" alt="Fotografía de la planta Cineraria marítima"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="planta-img-placeholder" style="display:none;" aria-hidden="true">🍃</div>
+          </div>
+          <div class="planta-body">
+            <span class="planta-tipo-badge badge-exterior">Exterior</span>
+            <h3 class="planta-nombre">Cineraria Marítima</h3>
+            <p class="planta-desc">Conocida por sus hojas plateadas y aterciopeladas, aporta contraste visual en jardines. Tolera el sol pleno y el viento.</p>
+            <a class="planta-link" href="info/cineria_maritima.pdf" download="cineria_maritima.pdf">📄 Más información</a>
+          </div>
+        </article>
+
+        <!-- Abelia -->
+        <article class="planta-card">
+          <div class="planta-img-wrap">
+            <img src="imagenes/abelia.jpeg" alt="Fotografía de la planta Abelia"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="planta-img-placeholder" style="display:none;" aria-hidden="true">🌸</div>
+          </div>
+          <div class="planta-body">
+            <span class="planta-tipo-badge badge-exterior">Exterior</span>
+            <h3 class="planta-nombre">Abelia</h3>
+            <p class="planta-desc">Arbusto ornamental de floración prolongada, fragante y atractivo para polinizadores. Ideal para setos y jardines formales.</p>
+            <a class="planta-link" href="info/abelia.pdf" download="abelia.pdf">📄 Más información</a>
+          </div>
+        </article>
+
+      </div><!-- /grupo-exterior -->
+
+    </div><!-- /catalogo-grupos -->
+  </section>
+
+  <!-- ==================== AUTOR ==================== -->
+  <section class="section section--tinted" id="autor" aria-labelledby="titulo-autor">
+    <div class="section-inner">
+      <h2 class="section-title" id="titulo-autor">Quién mantiene el sitio</h2>
+      <p class="section-subtitle">Conocé al responsable de este jardín digital.</p>
+      <div class="autor-card">
+        <div class="autor-avatar" aria-hidden="true">🧑‍🌾</div>
+        <div class="autor-info">
+          <h3>Nombre del Autor</h3>
+          <p>Apasionado por la botánica y el cultivo de plantas, comparte información para que todos puedan tener un jardín saludable.</p>
+          <p>📧 <a href="mailto:autor@jardincultivo.com">autor@jardincultivo.com</a></p>
+          <p>📞 <a href="tel:+54911XXXXXXXX">+54 9 11 XXXX-XXXX</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACTO ==================== -->
+  <section class="section section--light" id="contacto" aria-labelledby="titulo-contacto">
+    <div class="section-inner">
+      <h2 class="section-title" id="titulo-contacto">Información de Contacto</h2>
+      <p class="section-subtitle">¿Tenés preguntas o sugerencias? Completá el formulario y te respondemos.</p>
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Escribí tu consulta aquí..."></textarea>
+        </div>
+        <button type="button" class="btn-enviar">Enviar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer role="contentinfo">
+    <p>🌿 <strong>Jardín de Cultivo</strong> — Información sobre plantas de interior y exterior.</p>
+    <p>Contacto: <a href="mailto:autor@jardincultivo.com">autor@jardincultivo.com</a></p>
+  </footer>
+
+</body>
+</html>
