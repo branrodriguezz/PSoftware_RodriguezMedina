@@ -1,0 +1,538 @@
+/* =============================================
+   estiloIA.css – Jardín de Cultivo
+   Paleta: verdes naturales + pasteles suaves
+   ============================================= */
+
+/* --- Variables de color y tipografía --- */
+:root {
+  --verde-oscuro:   #2d5a27;
+  --verde-medio:    #4a8c3f;
+  --verde-claro:    #7aba6e;
+  --verde-pastel:   #c8e6c0;
+  --verde-muy-claro:#e8f5e3;
+  --menta:          #d4edda;
+  --crema:          #f5f7f0;
+  --blanco:         #ffffff;
+  --gris-suave:     #6b7c6a;
+  --texto-oscuro:   #1e3a1a;
+  --texto-medio:    #3d5c39;
+
+  /* Colores de tarjeta por tipo */
+  --borde-interior: #4a8c3f;
+  --fondo-interior: #e8f5e3;
+  --borde-exterior: #2d7a6e;
+  --fondo-exterior: #d4f0ec;
+
+  --font-principal: 'Georgia', 'Times New Roman', serif;
+  --font-ui:        'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --radius:         10px;
+  --sombra:         0 2px 10px rgba(45, 90, 39, 0.10);
+  --transicion:     0.25s ease;
+}
+
+/* --- Reset mínimo --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--crema);
+  color: var(--texto-oscuro);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* =============================================
+   BARRA DE NAVEGACIÓN
+   ============================================= */
+.navbar {
+  background-color: var(--verde-oscuro);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  min-height: 64px;
+}
+
+.navbar-logo {
+  font-family: var(--font-principal);
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: var(--verde-pastel);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  padding: 0.6rem 0;
+}
+
+.navbar-logo span {
+  color: var(--verde-claro);
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.navbar-links a {
+  display: block;
+  color: var(--verde-pastel);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+.navbar-links a:hover,
+.navbar-links a:focus {
+  background-color: var(--verde-medio);
+  color: var(--blanco);
+  outline: none;
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 60%, var(--verde-claro) 100%);
+  color: var(--blanco);
+  text-align: center;
+  padding: 4.5rem 1.5rem 3.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-principal);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 56ch;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.hero-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* =============================================
+   SECCIONES GENERALES
+   ============================================= */
+.section {
+  padding: 4rem 1.5rem;
+}
+
+.section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-principal);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--verde-oscuro);
+  margin-bottom: 0.5rem;
+  border-left: 5px solid var(--verde-claro);
+  padding-left: 0.75rem;
+}
+
+.section-subtitle {
+  color: var(--gris-suave);
+  font-size: 0.97rem;
+  margin-bottom: 2.5rem;
+  padding-left: calc(0.75rem + 5px);
+}
+
+.section--light  { background-color: var(--crema); }
+.section--tinted { background-color: var(--verde-muy-claro); }
+
+/* =============================================
+   FORMULARIO DE CONTACTO
+   ============================================= */
+.contact-form {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 2rem 2.5rem;
+  border: 1px solid var(--verde-pastel);
+}
+
+.form-group {
+  margin-bottom: 1.4rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--texto-medio);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--verde-pastel);
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  color: var(--texto-oscuro);
+  background: var(--crema);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--verde-medio);
+  box-shadow: 0 0 0 3px rgba(74, 140, 63, 0.15);
+  background: var(--blanco);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-enviar {
+  background-color: var(--verde-medio);
+  color: var(--blanco);
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  transition: background-color var(--transicion);
+  display: inline-block;
+}
+
+.btn-enviar:hover,
+.btn-enviar:focus {
+  background-color: var(--verde-oscuro);
+  outline: 2px solid var(--verde-claro);
+  outline-offset: 2px;
+}
+
+/* =============================================
+   SECCIÓN AUTOR
+   ============================================= */
+.autor-card {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  border: 1px solid var(--verde-pastel);
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.autor-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--verde-pastel), var(--verde-claro));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  flex-shrink: 0;
+}
+
+.autor-info h3 {
+  font-family: var(--font-principal);
+  font-size: 1.4rem;
+  color: var(--verde-oscuro);
+  margin-bottom: 0.3rem;
+}
+
+.autor-info p {
+  color: var(--gris-suave);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.autor-info a {
+  color: var(--verde-medio);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.autor-info a:hover {
+  color: var(--verde-oscuro);
+  text-decoration: underline;
+}
+
+/* =============================================
+   CATÁLOGO — FILTRO CON RADIO BUTTONS
+   Técnica: los <input type="radio"> ocultos son
+   hermanos directos de .catalogo-grupos en el DOM,
+   así el selector CSS ~ funciona correctamente.
+   ============================================= */
+
+/* Los radios reales están hidden, los labels son los botones visibles */
+#radio-interior,
+#radio-exterior {
+  display: none;
+}
+
+/* Barra de filtro */
+.catalogo-filtro {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  border: 2px solid var(--verde-pastel);
+  background: var(--blanco);
+  font-weight: 600;
+  font-size: 0.97rem;
+  color: var(--texto-medio);
+  user-select: none;
+  transition: border-color var(--transicion), background-color var(--transicion), color var(--transicion);
+}
+
+.filtro-btn:hover {
+  border-color: var(--verde-medio);
+  background: var(--verde-muy-claro);
+}
+
+/* Resalta el label cuyo radio está checked */
+#radio-interior:checked ~ .catalogo-filtro label[for="radio-interior"],
+#radio-exterior:checked ~ .catalogo-filtro label[for="radio-exterior"] {
+  border-color: var(--verde-oscuro);
+  background: var(--verde-pastel);
+  color: var(--verde-oscuro);
+}
+
+/* Grupos: ocultos por defecto */
+.plantas-grupo {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Mostrar grupo según radio checked */
+#radio-interior:checked ~ .catalogo-grupos .grupo-interior {
+  display: grid;
+}
+
+#radio-exterior:checked ~ .catalogo-grupos .grupo-exterior {
+  display: grid;
+}
+
+/* =============================================
+   TARJETAS DE PLANTA
+   ============================================= */
+.planta-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+
+.planta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(45, 90, 39, 0.16);
+}
+
+/* Interior: verde */
+.grupo-interior .planta-card {
+  border: 2.5px solid var(--borde-interior);
+  background-color: var(--fondo-interior);
+}
+
+/* Exterior: teal */
+.grupo-exterior .planta-card {
+  border: 2.5px solid var(--borde-exterior);
+  background-color: var(--fondo-exterior);
+}
+
+/* Zona de imagen */
+.planta-img-wrap {
+  width: 100%;
+  padding-top: 62%;
+  position: relative;
+  overflow: hidden;
+}
+
+.grupo-interior .planta-img-wrap { background: #d0eac8; }
+.grupo-exterior .planta-img-wrap { background: #b8ddd8; }
+
+.planta-img-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.planta-img-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+/* Cuerpo de la tarjeta */
+.planta-body {
+  padding: 1rem 1.15rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.planta-nombre {
+  font-family: var(--font-principal);
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--texto-oscuro);
+}
+
+.planta-tipo-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.65rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+}
+
+.badge-interior {
+  background: var(--verde-pastel);
+  color: var(--verde-oscuro);
+  border: 1px solid var(--borde-interior);
+}
+
+.badge-exterior {
+  background: #c0ece7;
+  color: #1a4d47;
+  border: 1px solid var(--borde-exterior);
+}
+
+.planta-desc {
+  font-size: 0.88rem;
+  color: var(--gris-suave);
+  flex: 1;
+}
+
+.planta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.48rem 1rem;
+  border-radius: 6px;
+  align-self: flex-start;
+  transition: background-color var(--transicion);
+}
+
+.grupo-interior .planta-link {
+  background: var(--verde-medio);
+  color: var(--blanco);
+}
+.grupo-interior .planta-link:hover { background: var(--verde-oscuro); }
+
+.grupo-exterior .planta-link {
+  background: #2d7a6e;
+  color: var(--blanco);
+}
+.grupo-exterior .planta-link:hover { background: #1a4d47; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background-color: var(--verde-oscuro);
+  color: var(--verde-pastel);
+  text-align: center;
+  padding: 1.8rem 1.5rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+footer a {
+  color: var(--verde-claro);
+  text-decoration: none;
+}
+footer a:hover { text-decoration: underline; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .navbar-inner { padding: 0.6rem 1rem; min-height: auto; gap: 0.5rem; }
+  .navbar-logo  { font-size: 1.1rem; }
+  .navbar-links a { font-size: 0.88rem; padding: 0.45rem 0.6rem; }
+  .contact-form { padding: 1.5rem 1.2rem; }
+  .autor-card   { padding: 1.5rem 1.2rem; gap: 1.2rem; }
+  .section      { padding: 3rem 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .navbar-inner      { flex-direction: column; align-items: flex-start; padding: 0.8rem 1rem; }
+  .navbar-links      { gap: 0.2rem; }
+  .navbar-links a    { font-size: 0.85rem; padding: 0.4rem 0.55rem; }
+  .hero              { padding: 3rem 1rem 2.5rem; }
+  .plantas-grupo     { grid-template-columns: 1fr; }
+  .catalogo-filtro   { gap: 0.75rem; }
+  .filtro-btn        { padding: 0.5rem 0.9rem; font-size: 0.92rem; }
+  .autor-avatar      { width: 70px; height: 70px; font-size: 2.2rem; }
+  .section           { padding: 2.5rem 1rem; }
+  .contact-form      { padding: 1.2rem 1rem; }
+}
+
+@media (min-width: 1200px) {
+  .plantas-grupo { grid-template-columns: repeat(3, 1fr); }
+}
